@@ -1,0 +1,17 @@
+ in  a app every pages is a activity
+ and every component is an widgets like text,button,center
+
+--flutter main source code flow---
+    main
+     |
+   myApp
+     |
+MaterialApp
+     |
+ActivityPage (home)
+     |
+ Scaffold
+     |
+ ...................
+   |             |
+ appbar         body
