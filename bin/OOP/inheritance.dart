@@ -60,12 +60,17 @@ class Teacher extends Human {
 }
 
 main() {
-  Student studentOne = Student("DPI", "B", 2, 2, 2);
-  studentOne.eating();
-  studentOne.taking();
-  print(studentOne.institute);
+  Human mulclass = Human(2, 2, 3);
+  mulclass.eating();
+  
 
-  Teacher EnglishTeacher = Teacher(2, 2, 2, "BUET", "English");
-  EnglishTeacher.displayingEveryting();
-  print(EnglishTeacher.institute);
+
+  // Student studentOne = Student("DPI", "B", 2, 2, 2);
+  // studentOne.eating();
+  // studentOne.taking();
+  // print(studentOne.institute);
+  //
+  // Teacher EnglishTeacher = Teacher(2, 2, 2, "BUET", "English");
+  // EnglishTeacher.displayingEveryting();
+  // print(EnglishTeacher.institute);
 }

@@ -4,10 +4,11 @@ for other classes to inherit from,we can't crate an obj ,abs is a ideology just*
 It only has the signature (method name and parameters).*/
 abstract class Shape {
   int dim1, dim2;
+
   // Constructor
   Shape(this.dim1, this.dim2);
   // Abstract method
-  void area();
+  void area(     );
 }
 
 class Rectangle extends Shape {

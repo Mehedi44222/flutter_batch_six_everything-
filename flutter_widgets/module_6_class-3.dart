@@ -1,96 +1,84 @@
 // Scaffold | Column | Row | Dialog | bottom sheet | Snackbar
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hello World',
-      // debugShowCheckedModeBanner: false,
+    return const MaterialApp(
       home: Home(),
     );
   }
 }
 
-// Column => Vertically
-// Row => Horizontally
-
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // Write whatever you want to show in screen
     return Scaffold(
-      backgroundColor: Colors.lightGreen.shade50,
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('Home screen', style: TextStyle(
-            color: Colors.white
-        ),),
-        leading: Icon(Icons.home_filled, color: Colors.white,),
-        actions: [
-          IconButton(onPressed: () {
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text('Money has been transferred'),
-            //     backgroundColor: Colors.green,
-            //     duration: Duration(seconds: 1),
-            //   ),
-            // );
-            showDialog(context: context, builder: (context) {
-              return AlertDialog(
-                title: Text('Send money'),
-                content: Text('Are you sure that you want to send money?'),
-                actions: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("ok"),
-                      Text("ok"),
-                    ],
-                  )
-
-                ],
-              );
-            });
-          }, icon: Icon(Icons.add)),
-        ],
-      ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Hello'),
-            Text('World from Rafat'),
-            Text('From'),
-            Text('Ostad'),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Icon(Icons.add), Icon(Icons.search), Icon(Icons.menu)],
+            ),
+            SizedBox(
+              width: 50,
+            ),
+            IconButton(
+                onPressed: () {
+                  showDialog(context: context, builder: (context) {
+                    return AlertDialog(
+                      title: Text("Exit"),
+                      content:Text("are you sure want to exit?") ,
+                      // icon:Icon(Icons.exit_to_app),
+                      actions: [Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text('Greeting from '),
-                Text('Ovi'),
-                Text('-'),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.date_range),
-                        Text('Date'),],
+                        children: [ElevatedButton(onPressed: (){}, child: Text("YES"),),
+                          ElevatedButton(onPressed: (){}, child: Text("NO"),)],
+                      )],
+                    );
+                  },);
+                },
+                icon: Icon(
+                  Icons.add_box,
+                  color: Colors.green,
+                  size: 50,
+                )),
+            IconButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: const Text("Whola,this is a person!"),
+                    backgroundColor: Colors.blueGrey,
+
+                    padding: const EdgeInsets.all(8),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                     ),
-                    Text('12-12-12'),
-                  ],
-                )
-              ],
-            )
+                  ));
+                },
+                icon: const Icon(
+                  Icons.person,
+                  color: Colors.green,
+                  size: 50,
+                )),
+            IconButton(onPressed: (){
+              showDialog(context: context, builder: (context) {
+              return const AlertDialog(
+                  title: Text("Caution"),
+                content: Text("are you sure you want to exit?"),
+                );
+              },);
+            }, icon: Icon(Icons.exit_to_app))
           ],
         ),
       ),
